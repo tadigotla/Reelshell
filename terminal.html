@@ -8,13 +8,14 @@
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
 
   :root {
-    --term-green: #39ff14;
+    --term-green: #7ed957;
     --term-green-dim: #1a7a0a;
-    --term-green-glow: rgba(57, 255, 20, 0.35);
-    --term-amber: #ffb700;
-    --term-red: #ff3333;
-    --term-cyan: #00e5ff;
-    --term-magenta: #ff00ff;
+    --term-green-glow: rgba(126, 217, 87, 0.20);
+    --term-amber: #e8a93b;
+    --term-red: #e06b6b;
+    --term-cyan: #5cc4d6;
+    --term-magenta: #c97bb8;
+    --flicker-min: 0.985;
     --term-bg: #0a0a0a;
     --term-bg-light: #111111;
     --term-surface: #1a1a1a;
@@ -45,8 +46,8 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow:
-      0 0 80px rgba(57, 255, 20, 0.08),
-      0 0 2px rgba(57, 255, 20, 0.3),
+      0 0 80px rgba(126, 217, 87, 0.06),
+      0 0 2px rgba(126, 217, 87, 0.20),
       inset 0 0 60px rgba(0, 0, 0, 0.4);
   }
 
@@ -63,13 +64,13 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(57, 255, 20, 0.01);
+    background: rgba(126, 217, 87, 0.01);
     z-index: 11;
     pointer-events: none;
-    animation: flicker 0.08s infinite alternate;
+    animation: flicker 0.12s infinite alternate;
   }
 
-  @keyframes flicker { 0% { opacity: 0.97; } 100% { opacity: 1; } }
+  @keyframes flicker { 0% { opacity: var(--flicker-min); } 100% { opacity: 1; } }
 
   .terminal {
     background: var(--term-bg);
@@ -121,7 +122,7 @@
 
   .status-dot.playback {
     background: var(--term-amber);
-    box-shadow: 0 0 6px rgba(255,183,0,0.5);
+    box-shadow: 0 0 6px rgba(232,169,59,0.30);
   }
 
   @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -259,10 +260,111 @@
       inset 0 0 24px rgba(0,0,0,0.45);
   }
 
-  #fortuneSlot {
-    width: 100%;
+  .stardate-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
     height: 100%;
+    width: 100%;
   }
+
+  .stardate-header {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .stardate-clock-block,
+  .stardate-date-block {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .stardate-divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(255,255,255,0.08);
+    margin: 4px 0;
+  }
+
+  .stardate-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--term-muted);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .stardate-clock {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--term-green);
+    text-shadow: 0 0 6px var(--term-green-glow);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stardate-clock-colon {
+    display: inline-block;
+    animation: colon-blink 1s steps(1, end) infinite;
+  }
+
+  @keyframes colon-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+  }
+
+  .stardate-dow,
+  .stardate-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--term-muted);
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .stardate-ambient {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #888;
+    transition: opacity 0.4s ease;
+    min-height: 1.2em;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .stardate-ambient::before {
+    content: '●';
+    color: var(--term-green);
+    margin-right: 6px;
+    display: inline-block;
+    animation: led-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes led-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .stardate-ambient.fading { opacity: 0; }
 
   .transport-controls {
     display: flex;
@@ -328,7 +430,7 @@
 
   .transport-btn.active.is-play svg {
     fill: var(--term-amber);
-    filter: drop-shadow(0 0 4px rgba(255,183,0,0.5));
+    filter: drop-shadow(0 0 4px rgba(232,169,59,0.30));
   }
 
   .transport-btn.is-record.active {
@@ -355,7 +457,7 @@
   }
 
   .progress-section {
-    flex: 1;
+    flex: 0 1 auto;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -363,7 +465,9 @@
   }
 
   .progress-track {
-    flex: 1;
+    flex: 1 1 auto;
+    width: 360px;
+    max-width: 360px;
     height: 6px;
     background: linear-gradient(180deg, #0a0a0a, #141414);
     border-radius: 3px;
@@ -415,8 +519,8 @@
     color: var(--term-amber);
     padding: 3px 8px;
     border-radius: 3px;
-    background: rgba(255,183,0,0.08);
-    border: 1px solid rgba(255,183,0,0.15);
+    background: rgba(232,169,59,0.08);
+    border: 1px solid rgba(232,169,59,0.15);
     animation: badge-pulse 1.5s ease-in-out infinite;
     position: absolute;
     top: 8px;
@@ -572,7 +676,20 @@
       </div>
 
       <div class="playback-right">
-        <div id="fortuneSlot"></div>
+        <div class="stardate-panel" id="stardatePanel">
+          <div class="stardate-header">
+            <div class="stardate-clock-block">
+              <div class="stardate-label">LOCAL</div>
+              <div class="stardate-clock" id="stardateClock">--:--:--</div>
+            </div>
+            <div class="stardate-divider"></div>
+            <div class="stardate-date-block">
+              <div class="stardate-dow"  id="stardateDow">---</div>
+              <div class="stardate-date" id="stardateDate">-- --- ----</div>
+            </div>
+          </div>
+          <div class="stardate-ambient" id="stardateAmbient">&nbsp;</div>
+        </div>
       </div>
 
       <div class="playback-badge" id="playbackBadge">
@@ -619,6 +736,13 @@
   let cwd = '~';
   let commandCount = 0;
   let sessionStart = Date.now();
+  let activeThemeName = 'GREEN';
+
+  const FORTUNES = [
+    'The best time to plant a tree was 20 years ago. The second best time is now.',
+    'Simplicity is the ultimate sophistication.',
+    'In the middle of difficulty lies opportunity.',
+  ];
 
   // ── DVR ───────────────────────────────────────
   let snapshots = [];
@@ -1001,12 +1125,7 @@
   });
 
   register('fortune', 'Random fortune', 'fortune', function() {
-    var f = [
-      'The best time to plant a tree was 20 years ago. The second best time is now.',
-      'Simplicity is the ultimate sophistication.',
-      'In the middle of difficulty lies opportunity.',
-    ];
-    print('> ' + f[Math.floor(Math.random() * f.length)], 'line-accent');
+    print('> ' + FORTUNES[Math.floor(Math.random() * FORTUNES.length)], 'line-accent');
   });
 
   register('sysinfo', 'Display system information', 'sysinfo', function() {
@@ -1030,15 +1149,16 @@
 
   register('theme', 'Switch color theme', 'theme <green|amber|cyan|red>', function(args) {
     var themes = {
-      green: { main: '#39ff14', glow: 'rgba(57,255,20,0.35)' },
-      amber: { main: '#ffb700', glow: 'rgba(255,183,0,0.35)' },
-      cyan:  { main: '#00e5ff', glow: 'rgba(0,229,255,0.35)' },
-      red:   { main: '#ff3333', glow: 'rgba(255,51,51,0.35)' },
+      green: { main: '#7ed957', glow: 'rgba(126,217,87,0.20)' },
+      amber: { main: '#e8a93b', glow: 'rgba(232,169,59,0.20)' },
+      cyan:  { main: '#5cc4d6', glow: 'rgba(92,196,214,0.20)' },
+      red:   { main: '#e06b6b', glow: 'rgba(224,107,107,0.20)' },
     };
     var t = themes[args[0]];
     if (!t) return print('Available themes: ' + Object.keys(themes).join(', '), 'line-warn');
     document.documentElement.style.setProperty('--term-green', t.main);
     document.documentElement.style.setProperty('--term-green-glow', t.glow);
+    activeThemeName = args[0].toUpperCase();
     print('Theme changed to <span style="color:' + t.main + '">' + args[0] + '</span>', 'line-success');
   });
 
@@ -1149,6 +1269,76 @@
     if (e.key === ' ' && snapshotIdx !== -1) {
       e.preventDefault();
       isPlaying ? stopPlayback() : startPlayback();
+    }
+  });
+
+  // ── Stardate Panel ────────────────────────────
+  const stardateClock   = document.getElementById('stardateClock');
+  const stardateDow     = document.getElementById('stardateDow');
+  const stardateDate    = document.getElementById('stardateDate');
+  const stardateAmbient = document.getElementById('stardateAmbient');
+  const DAY_NAMES   = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  const MONTH_NAMES = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function formatUptime() {
+    var s = Math.floor((Date.now() - sessionStart) / 1000);
+    return 'UPTIME ' + pad2(Math.floor(s / 3600)) + ':' + pad2(Math.floor(s / 60) % 60) + ':' + pad2(s % 60);
+  }
+  function randomFortune() { return '> ' + FORTUNES[Math.floor(Math.random() * FORTUNES.length)]; }
+
+  const ambientProducers = [
+    formatUptime,
+    function() { return 'CMDS ' + commandCount; },
+    function() { return 'THEME ' + activeThemeName; },
+    randomFortune,
+  ];
+  let ambientIdx = 0;
+  let clockTimer = null;
+  let ambientTimer = null;
+
+  function tickClock() {
+    var d = new Date();
+    stardateClock.innerHTML =
+      pad2(d.getHours()) +
+      '<span class="stardate-clock-colon">:</span>' +
+      pad2(d.getMinutes()) +
+      '<span class="stardate-clock-colon">:</span>' +
+      pad2(d.getSeconds());
+    stardateDow.textContent = DAY_NAMES[d.getDay()];
+    stardateDate.textContent = pad2(d.getDate()) + ' ' + MONTH_NAMES[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function rotateAmbient() {
+    stardateAmbient.classList.add('fading');
+    setTimeout(function() {
+      stardateAmbient.textContent = ambientProducers[ambientIdx]();
+      ambientIdx = (ambientIdx + 1) % ambientProducers.length;
+      stardateAmbient.classList.remove('fading');
+    }, 400);
+  }
+
+  function startStardateTimers() {
+    if (clockTimer === null) clockTimer = setInterval(tickClock, 1000);
+    if (ambientTimer === null) ambientTimer = setInterval(rotateAmbient, 10000);
+  }
+
+  function stopStardateTimers() {
+    if (clockTimer !== null) { clearInterval(clockTimer); clockTimer = null; }
+    if (ambientTimer !== null) { clearInterval(ambientTimer); ambientTimer = null; }
+  }
+
+  tickClock();
+  stardateAmbient.textContent = ambientProducers[ambientIdx]();
+  ambientIdx = (ambientIdx + 1) % ambientProducers.length;
+  startStardateTimers();
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+      stopStardateTimers();
+    } else {
+      tickClock();
+      startStardateTimers();
     }
   });
 
