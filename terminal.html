@@ -199,13 +199,16 @@
   /* ── Playback Control Surface ─────────────────── */
   .playback-surface {
     flex-shrink: 0;
-    background: linear-gradient(180deg, #141414 0%, #0e0e0e 40%, #121212 100%);
-    border-top: 1px solid #2a2a2a;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 2px),
+      linear-gradient(180deg, #3a3a3a 0%, #1f1f1f 50%, #2c2c2c 100%);
+    border-top: 1px solid #4a4a4a;
     border-bottom: 1px solid #0a0a0a;
-    padding: 10px 18px;
+    padding: 12px 18px;
+    min-height: 88px;
     display: flex;
-    align-items: center;
-    gap: 12px;
+    align-items: stretch;
+    gap: 14px;
     user-select: none;
     position: relative;
   }
@@ -213,18 +216,52 @@
   .playback-surface::before {
     content: '';
     position: absolute;
-    top: 0; left: 20px; right: 20px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #333 20%, #333 80%, transparent);
-    box-shadow: 0 1px 0 rgba(255,255,255,0.03);
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.09), transparent 60%);
+    pointer-events: none;
   }
 
   .playback-surface::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255,255,255,0.006) 1px, rgba(255,255,255,0.006) 2px);
     pointer-events: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.10),
+      inset 0 -1px 0 rgba(0,0,0,0.55);
+  }
+
+  .playback-left {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .playback-right {
+    flex: 0 0 33%;
+    min-width: 180px;
+    max-width: 360px;
+    position: relative;
+    z-index: 1;
+    margin: 2px 0;
+    border-radius: 6px;
+    background: rgba(20,20,20,0.45);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.12),
+      inset 0 0 24px rgba(0,0,0,0.45);
+  }
+
+  #fortuneSlot {
+    width: 100%;
+    height: 100%;
   }
 
   .transport-controls {
@@ -292,6 +329,21 @@
   .transport-btn.active.is-play svg {
     fill: var(--term-amber);
     filter: drop-shadow(0 0 4px rgba(255,183,0,0.5));
+  }
+
+  .transport-btn.is-record.active {
+    background: linear-gradient(180deg, #1a1a1a 0%, #151515 50%, #111 100%);
+    box-shadow:
+      inset 0 1px 2px rgba(0,0,0,0.6),
+      inset 0 -1px 1px rgba(255,255,255,0.04),
+      0 0 6px rgba(255,59,48,0.3),
+      0 1px 0 rgba(255,255,255,0.05),
+      0 -1px 0 rgba(0,0,0,0.8);
+  }
+
+  .transport-btn.is-record.active svg {
+    fill: #ff3b30;
+    filter: drop-shadow(0 0 4px rgba(255,59,48,0.6));
   }
 
   .transport-divider {
@@ -366,6 +418,10 @@
     background: rgba(255,183,0,0.08);
     border: 1px solid rgba(255,183,0,0.15);
     animation: badge-pulse 1.5s ease-in-out infinite;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    z-index: 2;
   }
 
   .playback-badge.show { display: flex; }
@@ -432,7 +488,9 @@
     .output-area { font-size: 12.5px; padding: 12px; }
     .input-field { font-size: 13px; }
     .title-bar-text { display: none; }
-    .playback-surface { padding: 8px 10px; gap: 6px; }
+    .playback-surface { padding: 8px 10px; gap: 6px; min-height: 0; }
+    .playback-left { gap: 6px; }
+    .playback-right { display: none; }
     .transport-btn { width: 32px; height: 28px; }
     .progress-label { font-size: 10px; min-width: 44px; }
   }
@@ -468,38 +526,53 @@
     </div>
 
     <div class="playback-surface">
-      <div class="transport-controls">
-        <button class="transport-btn" id="btnRewind" title="Rewind to start">
-          <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
-        </button>
-        <button class="transport-btn" id="btnBack" title="Step back">
-          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6l-8.5 6z"/></svg>
-        </button>
+      <div class="playback-left">
+        <div class="transport-controls">
+          <button class="transport-btn" id="btnRewind" title="Rewind to start">
+            <svg viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+          </button>
+          <button class="transport-btn" id="btnBack" title="Step back">
+            <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6l-8.5 6z"/></svg>
+          </button>
 
-        <div class="transport-divider"></div>
+          <div class="transport-divider"></div>
 
-        <button class="transport-btn" id="btnPlay" title="Play">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
-        </button>
-        <button class="transport-btn" id="btnPause" title="Pause">
-          <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-        </button>
+          <button class="transport-btn" id="btnPlay" title="Play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z"/></svg>
+          </button>
+          <button class="transport-btn" id="btnPause" title="Pause">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button class="transport-btn" id="btnStop" title="Stop">
+            <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
+          </button>
 
-        <div class="transport-divider"></div>
+          <div class="transport-divider"></div>
 
-        <button class="transport-btn" id="btnAhead" title="Step ahead">
-          <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zm10-12v12h2V6h-2z"/></svg>
-        </button>
-        <button class="transport-btn" id="btnFastFwd" title="Fast forward to end">
-          <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12l8.5 6L13 18V6z"/></svg>
-        </button>
+          <button class="transport-btn" id="btnAhead" title="Step ahead">
+            <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zm10-12v12h2V6h-2z"/></svg>
+          </button>
+          <button class="transport-btn" id="btnFastFwd" title="Fast forward to end">
+            <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12l8.5 6L13 18V6z"/></svg>
+          </button>
+
+          <div class="transport-divider"></div>
+
+          <button class="transport-btn is-record active" id="btnRecord" title="Recording (click to toggle)">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>
+          </button>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-track" id="progressTrack">
+            <div class="progress-fill" id="progressFill" style="width: 100%"></div>
+          </div>
+          <div class="progress-label" id="progressLabel">0 / 0</div>
+        </div>
       </div>
 
-      <div class="progress-section">
-        <div class="progress-track" id="progressTrack">
-          <div class="progress-fill" id="progressFill" style="width: 100%"></div>
-        </div>
-        <div class="progress-label" id="progressLabel">0 / 0</div>
+      <div class="playback-right">
+        <div id="fortuneSlot"></div>
       </div>
 
       <div class="playback-badge" id="playbackBadge">
@@ -535,8 +608,10 @@
   const btnBack     = document.getElementById('btnBack');
   const btnPlay     = document.getElementById('btnPlay');
   const btnPause    = document.getElementById('btnPause');
+  const btnStop     = document.getElementById('btnStop');
   const btnAhead    = document.getElementById('btnAhead');
   const btnFastFwd  = document.getElementById('btnFastFwd');
+  const btnRecord   = document.getElementById('btnRecord');
 
   let history = [];
   let historyIdx = -1;
@@ -550,9 +625,11 @@
   let snapshotIdx = -1;
   let isPlaying = false;
   let playTimer = null;
+  let recordingEnabled = true;
   const PLAY_INTERVAL = 1200;
 
   function takeSnapshot() {
+    if (!recordingEnabled) return;
     snapshots.push({ html: output.innerHTML });
     if (snapshotIdx === -1) updateProgress();
   }
@@ -630,6 +707,14 @@
     goToSnapshot(snapshotIdx + 1);
   });
   btnFastFwd.addEventListener('click', () => { stopPlayback(); goLive(); });
+  btnStop.addEventListener('click', () => {
+    if (snapshotIdx === -1 && !isPlaying) return;
+    goLive();
+  });
+  btnRecord.addEventListener('click', () => {
+    recordingEnabled = !recordingEnabled;
+    btnRecord.classList.toggle('active', recordingEnabled);
+  });
 
   progressTrack.addEventListener('click', (e) => {
     if (snapshots.length === 0) return;
@@ -932,6 +1017,7 @@
       ['Resolution', '<span style="color:var(--term-text)">' + window.innerWidth + 'x' + window.innerHeight + '</span>'],
       ['Commands', '<span style="color:var(--term-amber)">' + Object.keys(COMMANDS).length + ' loaded</span>'],
       ['Snapshots', '<span style="color:var(--term-amber)">' + snapshots.length + ' recorded</span>'],
+      ['Recording', '<span style="color:' + (recordingEnabled ? 'var(--term-green)' : 'var(--term-amber)') + '">' + (recordingEnabled ? 'ON' : 'OFF') + '</span>'],
     ]);
   });
 
@@ -1093,7 +1179,7 @@
     execute('banner', true);
     print('');
     print('Welcome to <span style="color:var(--term-green)">NEXTERM</span> — your browser-based terminal.', 'line-system');
-    print('Type <span style="color:var(--term-amber)">help</span> to see all commands. Use the transport bar to replay your session.', 'line-system');
+    print('Type <span style="color:var(--term-amber)">help</span> to see all commands. Use the transport bar to replay your session — <span style="color:var(--term-amber)">STOP</span> returns to live and toggle <span style="color:var(--term-amber)">RECORD</span> to pause snapshot capture.', 'line-system');
     print('');
 
     takeSnapshot();
