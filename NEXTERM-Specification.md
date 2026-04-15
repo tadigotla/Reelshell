@@ -13,13 +13,13 @@
 
 ## 1. Executive Summary
 
-NEXTERM is a fully client-side, browser-based terminal emulator built as a single HTML file. It provides an authentic retro-CRT terminal experience with a virtual filesystem, 20+ built-in commands, session DVR playback, and a themeable interface. It requires zero server-side infrastructure and runs entirely in the browser via vanilla JavaScript.
+NEXTERM is a fully client-side, browser-based terminal emulator that ships as a single double-clickable HTML file. It provides an authentic retro-CRT terminal experience with a virtual filesystem, 20+ built-in commands, session DVR playback, and a themeable interface. It requires zero server-side infrastructure and runs entirely in the browser via vanilla JavaScript. The JavaScript source is authored as modular files under `src/` and concatenated into `terminal.html` by a dependency-free Node build script; the shipped artifact is still a single HTML file with no external runtime dependencies.
 
 The application is designed for embedding in blogs, documentation sites, and interactive demos — particularly via Codepen embeds on platforms like Substack where direct HTML injection is not supported.
 
 ### 1.1 Key Differentiators
 
-- **Zero dependencies:** No frameworks, build tools, or npm packages. Pure HTML/CSS/JS in a single file.
+- **Zero runtime dependencies:** No frameworks, no npm packages, no lockfile. The shipped `terminal.html` is a single file with inline CSS and JavaScript. The dev build script (`build.mjs`) uses only Node built-ins.
 - **Session DVR:** Full playback system with transport controls, progress scrubbing, and auto-play.
 - **CRT aesthetics:** Scanline overlay, screen flicker, phosphor glow, and boot sequence animation.
 - **Extensible command system:** Register new commands with a single function call.
@@ -29,7 +29,7 @@ The application is designed for embedding in blogs, documentation sites, and int
 
 ## 2. Architecture
 
-NEXTERM follows a single-file architecture pattern. All HTML structure, CSS styling, and JavaScript logic are contained within one `.html` file. This design choice maximizes portability and simplifies deployment.
+NEXTERM follows a "single-shipped-file, modular source" architecture. The HTML structure, CSS styling, and (concatenated) JavaScript logic are contained within one `terminal.html` file for portability and deployment simplicity. The JavaScript itself is authored as ~11 small modules under `src/` (one per concern: DOM refs, state, output, history, themes, filesystem, DVR, autocomplete, commands, boot, main wiring), each attaching to a shared `window.NX` namespace. A dependency-free `build.mjs` concatenates them into `terminal.html` at build time.
 
 ### 2.1 Technology Stack
 

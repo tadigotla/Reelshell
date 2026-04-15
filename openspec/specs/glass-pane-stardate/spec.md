@@ -91,14 +91,6 @@ The date column SHALL display the day-of-week (e.g. `MON`) on the first line and
 - **WHEN** the panel renders
 - **THEN** the date column shows two stacked text lines matching the patterns `[A-Z]{3}` and `[0-9]{2} [A-Z]{3} [0-9]{4}`
 
-### Requirement: Clock column shows a `LOCAL` label above the time
-
-The clock column SHALL display a small uppercase `LOCAL` label centered above the clock value. The label MUST use a font size of approximately 9px and the existing muted color.
-
-#### Scenario: Label visible
-- **WHEN** the page loads
-- **THEN** a `LOCAL` label is visible directly above the HH:MM:SS clock value, horizontally centered with the clock
-
 ### Requirement: Clock colons blink once per second
 
 The two `:` separators in the clock SHALL fade between full opacity and approximately 30% opacity once per second via a CSS animation. The animation MUST resync with each clock tick so the blink remains aligned with the seconds advance. The blink MUST NOT cause horizontal layout shift.

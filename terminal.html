@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+<!-- GENERATED FROM src/ — DO NOT EDIT — run: node build.mjs -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'none'; base-uri 'self'; frame-ancestors 'none'">
 <title>NEXTERM // Web Terminal v3.2</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
-
   :root {
     /* Chassis */
     --term-bg: #0a0a0a;
@@ -44,7 +44,7 @@
   html, body { height: 100%; background: #000; overflow: hidden; }
 
   body {
-    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     color: var(--term-text);
     display: flex;
     align-items: center;
@@ -159,7 +159,7 @@
   :root[data-mode="light"] .mode-toggle-thumb { transform: translateX(24px); }
 
   .title-bar-text {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 12px;
     color: var(--term-muted);
     letter-spacing: 2px;
@@ -217,12 +217,12 @@
   .output-table th { color: var(--term-cyan); text-align: left; padding: 2px 16px 2px 0; border-bottom: 1px solid var(--term-border); font-weight: 600; }
   .output-table td { padding: 2px 16px 2px 0; color: var(--term-text); }
 
-  .ascii-art {
+  .nexterm-wordmark {
     color: var(--term-green);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 3px;
     text-shadow: 0 0 8px var(--term-green-glow);
-    font-size: 12px;
-    line-height: 1.25;
-    letter-spacing: 1px;
   }
 
   .input-area {
@@ -250,7 +250,7 @@
     border: none;
     outline: none;
     color: var(--term-text);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 14px;
     caret-color: var(--term-green);
     letter-spacing: 0.3px;
@@ -305,9 +305,9 @@
   }
 
   .playback-right {
-    flex: 0 0 38%;
-    min-width: 220px;
-    max-width: 440px;
+    flex: 0 0 44%;
+    min-width: 280px;
+    max-width: 560px;
     position: relative;
     z-index: 1;
     margin: 2px 0;
@@ -368,7 +368,7 @@
   }
 
   .stardate-clock {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 28px;
     letter-spacing: 2px;
     color: var(--term-green);
@@ -389,7 +389,7 @@
   }
 
   .stardate-dow {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 11px;
     letter-spacing: 3px;
     color: var(--term-muted);
@@ -399,11 +399,10 @@
   }
 
   .stardate-date {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 16px;
     letter-spacing: 2px;
-    color: var(--term-text);
-    opacity: 0.65;
+    color: rgba(230, 230, 230, 0.82);
     text-transform: uppercase;
     line-height: 1.2;
     white-space: nowrap;
@@ -461,7 +460,7 @@
     bottom: -14px;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 9px;
     letter-spacing: 1px;
     color: var(--term-text);
@@ -609,7 +608,7 @@
   }
 
   .progress-label {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 11px;
     color: var(--term-muted);
     white-space: nowrap;
@@ -622,7 +621,7 @@
     display: none;
     align-items: center;
     gap: 5px;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 10px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -670,7 +669,7 @@
   .boot-overlay.done { opacity: 0; pointer-events: none; }
 
   .boot-text {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Share Tech Mono', ui-monospace, 'SF Mono', Menlo, 'Cascadia Mono', Consolas, 'Courier New', monospace;
     font-size: 13px;
     color: var(--term-green);
     text-shadow: 0 0 8px var(--term-green-glow);
@@ -829,152 +828,173 @@
   </div>
 </div>
 
+
 <script>
-(() => {
-  const output      = document.getElementById('output');
-  const cmdInput    = document.getElementById('cmdInput');
-  const statusL     = document.getElementById('statusLeft');
-  const statusR     = document.getElementById('statusRight');
-  const acHint      = document.getElementById('autocomplete');
-  const bootOvl     = document.getElementById('bootOverlay');
-  const bootTxt     = document.getElementById('bootText');
-  const promptLbl   = document.getElementById('promptLabel');
-  const statusDot   = document.getElementById('statusDot');
-  const statusMode  = document.getElementById('statusMode');
-  const progressFill  = document.getElementById('progressFill');
-  const progressLabel = document.getElementById('progressLabel');
-  const progressTrack = document.getElementById('progressTrack');
-  const playbackBadge = document.getElementById('playbackBadge');
+/* ── dom.js ── */
+(function(NX) {
+  NX.DOM = {
+    output:          document.getElementById('output'),
+    cmdInput:        document.getElementById('cmdInput'),
+    statusL:         document.getElementById('statusLeft'),
+    statusR:         document.getElementById('statusRight'),
+    acHint:          document.getElementById('autocomplete'),
+    bootOvl:         document.getElementById('bootOverlay'),
+    bootTxt:         document.getElementById('bootText'),
+    promptLbl:       document.getElementById('promptLabel'),
+    statusDot:       document.getElementById('statusDot'),
+    statusMode:      document.getElementById('statusMode'),
+    progressFill:    document.getElementById('progressFill'),
+    progressLabel:   document.getElementById('progressLabel'),
+    progressTrack:   document.getElementById('progressTrack'),
+    playbackBadge:   document.getElementById('playbackBadge'),
+    btnRewind:       document.getElementById('btnRewind'),
+    btnBack:         document.getElementById('btnBack'),
+    btnPlay:         document.getElementById('btnPlay'),
+    btnPause:        document.getElementById('btnPause'),
+    btnStop:         document.getElementById('btnStop'),
+    btnAhead:        document.getElementById('btnAhead'),
+    btnFastFwd:      document.getElementById('btnFastFwd'),
+    btnRecord:       document.getElementById('btnRecord'),
+    modeToggle:      document.getElementById('modeToggle'),
+    fontKnob:        document.getElementById('fontKnob'),
+    fontKnobTooltip: document.getElementById('fontKnobTooltip'),
+    stardateClock:   document.getElementById('stardateClock'),
+    stardateDow:     document.getElementById('stardateDow'),
+    stardateDate:    document.getElementById('stardateDate'),
+    terminal:        document.querySelector('.terminal'),
+  };
+  NX.DOM.fontKnobMount = NX.DOM.fontKnob && NX.DOM.fontKnob.closest('.font-knob-mount');
+})(window.NX = window.NX || {});
 
-  const btnRewind   = document.getElementById('btnRewind');
-  const btnBack     = document.getElementById('btnBack');
-  const btnPlay     = document.getElementById('btnPlay');
-  const btnPause    = document.getElementById('btnPause');
-  const btnStop     = document.getElementById('btnStop');
-  const btnAhead    = document.getElementById('btnAhead');
-  const btnFastFwd  = document.getElementById('btnFastFwd');
-  const btnRecord   = document.getElementById('btnRecord');
+/* ── state.js ── */
+(function(NX) {
+  NX.State = {
+    currentUser: 'guest',
+    cwd: '~',
+    commandCount: 0,
+    sessionStart: Date.now(),
+    activeThemeName: 'GREEN',
+    firstBootSeen: false,
+    FORTUNES: [
+      'The best time to plant a tree was 20 years ago. The second best time is now.',
+      'Simplicity is the ultimate sophistication.',
+      'In the middle of difficulty lies opportunity.',
+    ],
+  };
+})(window.NX = window.NX || {});
 
-  let history = [];
-  let historyIdx = -1;
-  let currentUser = 'guest';
-  let cwd = '~';
-  let commandCount = 0;
-  let sessionStart = Date.now();
-  let activeThemeName = 'GREEN';
-
-  const FORTUNES = [
-    'The best time to plant a tree was 20 years ago. The second best time is now.',
-    'Simplicity is the ultimate sophistication.',
-    'In the middle of difficulty lies opportunity.',
-  ];
-
-  // ── DVR ───────────────────────────────────────
-  let snapshots = [];
-  let snapshotIdx = -1;
-  let isPlaying = false;
-  let playTimer = null;
-  let recordingEnabled = true;
-  const PLAY_INTERVAL = 1200;
-
-  function takeSnapshot() {
-    if (!recordingEnabled) return;
-    snapshots.push({ html: output.innerHTML });
-    if (snapshotIdx === -1) updateProgress();
+/* ── output.js ── */
+(function(NX) {
+  function print(html, className) {
+    var div = document.createElement('div');
+    div.className = ('line ' + (className || '')).trim();
+    div.innerHTML = html;
+    NX.DOM.output.appendChild(div);
+    NX.DOM.output.scrollTop = NX.DOM.output.scrollHeight;
   }
 
-  function goToSnapshot(idx) {
-    if (snapshots.length === 0) return;
-    idx = Math.max(0, Math.min(idx, snapshots.length - 1));
-    snapshotIdx = idx;
-    output.innerHTML = snapshots[idx].html;
-    output.scrollTop = output.scrollHeight;
-    updateProgress();
-    updatePlaybackUI();
+  function printPromptEcho(cmd) {
+    print(
+      '<span class="prompt-user">' + NX.State.currentUser + '@nexterm</span><span class="prompt-separator">:</span><span class="prompt-user">' + NX.State.cwd + '$</span> <span class="prompt-cmd">' + escapeHtml(cmd) + '</span>',
+      'line-prompt-echo'
+    );
   }
 
-  function goLive() {
-    if (snapshots.length === 0) return;
-    snapshotIdx = -1;
-    output.innerHTML = snapshots[snapshots.length - 1].html;
-    output.scrollTop = output.scrollHeight;
-    stopPlayback();
-    updateProgress();
-    updatePlaybackUI();
+  function printTable(headers, rows) {
+    var html = '<table class="output-table"><thead><tr>';
+    headers.forEach(function(h) { html += '<th>' + escapeHtml(h) + '</th>'; });
+    html += '</tr></thead><tbody>';
+    rows.forEach(function(row) { html += '<tr>'; row.forEach(function(cell) { html += '<td>' + cell + '</td>'; }); html += '</tr>'; });
+    html += '</tbody></table>';
+    print(html);
   }
 
-  function updateProgress() {
-    const total = snapshots.length;
-    const current = snapshotIdx === -1 ? total : snapshotIdx + 1;
-    const pct = total === 0 ? 100 : (current / total) * 100;
-    progressFill.style.width = pct + '%';
-    progressLabel.textContent = current + ' / ' + total;
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  function updatePlaybackUI() {
-    const inPlayback = snapshotIdx !== -1;
-    playbackBadge.classList.toggle('show', inPlayback || isPlaying);
-    statusDot.classList.toggle('playback', inPlayback);
-    statusMode.textContent = isPlaying ? 'PLAYING' : inPlayback ? 'PLAYBACK' : 'ACTIVE';
-    cmdInput.disabled = inPlayback;
-    cmdInput.placeholder = inPlayback ? '── playback mode ── press ⏩ to return to live' : "type 'help' to get started...";
-    btnPlay.classList.toggle('active', isPlaying);
-    btnPlay.classList.toggle('is-play', isPlaying);
-    btnPause.classList.toggle('active', inPlayback && !isPlaying);
+  function updatePrompt() {
+    NX.DOM.promptLbl.textContent = NX.State.currentUser + '@nexterm:' + NX.State.cwd + '$';
   }
 
-  function startPlayback() {
-    if (snapshots.length === 0) return;
-    if (snapshotIdx === -1) snapshotIdx = 0;
-    isPlaying = true;
-    updatePlaybackUI();
-    playTimer = setInterval(() => {
-      if (snapshotIdx >= snapshots.length - 1) { stopPlayback(); return; }
-      snapshotIdx++;
-      goToSnapshot(snapshotIdx);
-    }, PLAY_INTERVAL);
+  function updateStatus() {
+    var elapsed = Math.floor((Date.now() - NX.State.sessionStart) / 1000);
+    var mins = Math.floor(elapsed / 60);
+    var secs = elapsed % 60;
+    NX.DOM.statusL.textContent = 'CMD: ' + NX.State.commandCount;
+    NX.DOM.statusR.textContent = 'SESSION ' + String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0') + ' | UTF-8';
   }
 
-  function stopPlayback() {
-    isPlaying = false;
-    if (playTimer) { clearInterval(playTimer); playTimer = null; }
-    updatePlaybackUI();
+  NX.Output = { print: print, printPromptEcho: printPromptEcho, printTable: printTable, escapeHtml: escapeHtml, updatePrompt: updatePrompt, updateStatus: updateStatus };
+})(window.NX = window.NX || {});
+
+/* ── history.js ── */
+(function(NX) {
+  var MAX_HISTORY = 500;
+  var history = [];
+  var historyIdx = -1;
+
+  function push(cmd) {
+    history.push(cmd);
+    if (history.length > MAX_HISTORY) history.splice(0, history.length - MAX_HISTORY);
+    historyIdx = history.length;
   }
 
-  btnRewind.addEventListener('click', () => { stopPlayback(); goToSnapshot(0); });
-  btnBack.addEventListener('click', () => {
-    stopPlayback();
-    const idx = snapshotIdx === -1 ? snapshots.length - 2 : snapshotIdx - 1;
-    goToSnapshot(Math.max(0, idx));
-  });
-  btnPlay.addEventListener('click', () => { if (isPlaying) stopPlayback(); else startPlayback(); });
-  btnPause.addEventListener('click', () => { if (isPlaying) stopPlayback(); });
-  btnAhead.addEventListener('click', () => {
-    stopPlayback();
-    if (snapshotIdx === -1) return;
-    if (snapshotIdx >= snapshots.length - 1) { goLive(); return; }
-    goToSnapshot(snapshotIdx + 1);
-  });
-  btnFastFwd.addEventListener('click', () => { stopPlayback(); goLive(); });
-  btnStop.addEventListener('click', () => {
-    if (snapshotIdx === -1 && !isPlaying) return;
-    goLive();
-  });
-  btnRecord.addEventListener('click', () => {
-    recordingEnabled = !recordingEnabled;
-    btnRecord.classList.toggle('active', recordingEnabled);
-  });
+  function back() {
+    if (historyIdx > 0) { historyIdx--; return history[historyIdx]; }
+    return undefined;
+  }
 
-  progressTrack.addEventListener('click', (e) => {
-    if (snapshots.length === 0) return;
-    stopPlayback();
-    const rect = progressTrack.getBoundingClientRect();
-    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    goToSnapshot(Math.round(pct * (snapshots.length - 1)));
-  });
+  function forward() {
+    if (historyIdx < history.length - 1) { historyIdx++; return history[historyIdx]; }
+    historyIdx = history.length;
+    return '';
+  }
 
-  // ── Filesystem ────────────────────────────────
-  const FS = {
+  function all() { return history.slice(); }
+
+  function replaceAll(newHistory) {
+    history = Array.isArray(newHistory) ? newHistory.slice() : [];
+    if (history.length > MAX_HISTORY) history.splice(0, history.length - MAX_HISTORY);
+    historyIdx = history.length;
+  }
+
+  NX.History = { push: push, back: back, forward: forward, all: all, replaceAll: replaceAll, MAX: MAX_HISTORY };
+})(window.NX = window.NX || {});
+
+/* ── themes.js ── */
+(function(NX) {
+  var THEMES = {
+    green: { main: '#7ed957', glow: 'rgba(126,217,87,0.20)' },
+    amber: { main: '#e8a93b', glow: 'rgba(232,169,59,0.20)' },
+    cyan:  { main: '#5cc4d6', glow: 'rgba(92,196,214,0.20)' },
+    red:   { main: '#e06b6b', glow: 'rgba(224,107,107,0.20)' },
+  };
+
+  function apply(name) {
+    var t = THEMES[name];
+    if (!t) return null;
+    document.documentElement.style.setProperty('--term-green', t.main);
+    document.documentElement.style.setProperty('--term-green-glow', t.glow);
+    NX.State.activeThemeName = name.toUpperCase();
+    if (NX.Persist) NX.Persist.savePrefsSync();
+    return t;
+  }
+
+  function toggleMode() {
+    var isLight = document.documentElement.dataset.mode === 'light';
+    document.documentElement.dataset.mode = isLight ? 'dark' : 'light';
+    if (NX.Persist) NX.Persist.savePrefsSync();
+  }
+
+  function names() { return Object.keys(THEMES); }
+
+  NX.Themes = { apply: apply, toggleMode: toggleMode, names: names };
+})(window.NX = window.NX || {});
+
+/* ── fs.js ── */
+(function(NX) {
+  var FS = {
     '~': {
       type: 'dir',
       children: {
@@ -998,15 +1018,16 @@
   };
 
   function resolvePath(pathStr) {
-    let parts;
+    var parts;
     if (pathStr.startsWith('~') || pathStr.startsWith('/')) {
       parts = pathStr.replace(/^~\/?/, '').split('/').filter(Boolean);
     } else {
-      const cwdParts = cwd.replace(/^~\/?/, '').split('/').filter(Boolean);
-      parts = [...cwdParts, ...pathStr.split('/').filter(Boolean)];
+      var cwdParts = NX.State.cwd.replace(/^~\/?/, '').split('/').filter(Boolean);
+      parts = cwdParts.concat(pathStr.split('/').filter(Boolean));
     }
-    const resolved = [];
-    for (const p of parts) {
+    var resolved = [];
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
       if (p === '..') resolved.pop();
       else if (p !== '.') resolved.push(p);
     }
@@ -1014,8 +1035,9 @@
   }
 
   function getNode(pathParts) {
-    let node = FS['~'];
-    for (const part of pathParts) {
+    var node = FS['~'];
+    for (var i = 0; i < pathParts.length; i++) {
+      var part = pathParts[i];
       if (!node || node.type !== 'dir' || !node.children[part]) return null;
       node = node.children[part];
     }
@@ -1026,202 +1048,557 @@
     return parts.length ? '~/' + parts.join('/') : '~';
   }
 
-  // ── Rendering ─────────────────────────────────
-  function print(html, className) {
-    const div = document.createElement('div');
-    div.className = ('line ' + (className || '')).trim();
-    div.innerHTML = html;
-    output.appendChild(div);
-    output.scrollTop = output.scrollHeight;
+  function setFS(newFS) {
+    if (newFS && newFS['~'] && newFS['~'].type === 'dir' && newFS['~'].children) {
+      FS = newFS;
+    }
   }
 
-  function printPromptEcho(cmd) {
-    print(
-      '<span class="prompt-user">' + currentUser + '@nexterm</span><span class="prompt-separator">:</span><span class="prompt-user">' + cwd + '$</span> <span class="prompt-cmd">' + escapeHtml(cmd) + '</span>',
-      'line-prompt-echo'
-    );
+  NX.FS = {
+    get FS() { return FS; },
+    setFS: setFS,
+    resolvePath: resolvePath,
+    getNode: getNode,
+    getAbsPath: getAbsPath,
+  };
+})(window.NX = window.NX || {});
+
+/* ── persist.js ── */
+(function(NX) {
+  var SCHEMA_VERSION = 1;
+  var PREFS_KEY = 'nexterm:prefs:v1';
+  var DB_NAME = 'nexterm';
+  var STORE = 'session';
+  var RECORD_ID = 'current';
+  var SAVE_DEBOUNCE_MS = 500;
+  var FONT_MIN = 11;
+  var FONT_MAX = 22;
+
+  var saveTimer = null;
+  var lastSaved = null;
+  var lastSavedBytes = 0;
+  var dbPromise = null;
+  var loading = false;
+
+  function warn(msg, err) {
+    if (typeof console !== 'undefined' && console.warn) console.warn('[persist] ' + msg, err || '');
   }
 
-  function printTable(headers, rows) {
-    var html = '<table class="output-table"><thead><tr>';
-    headers.forEach(function(h) { html += '<th>' + escapeHtml(h) + '</th>'; });
-    html += '</tr></thead><tbody>';
-    rows.forEach(function(row) { html += '<tr>'; row.forEach(function(cell) { html += '<td>' + cell + '</td>'; }); html += '</tr>'; });
-    html += '</tbody></table>';
-    print(html);
+  // ── Tier 1: localStorage (synchronous) ────────
+  function loadPrefsSync() {
+    loading = true;
+    try {
+      var raw = localStorage.getItem(PREFS_KEY);
+      if (!raw) return;
+      var data = JSON.parse(raw);
+      if (!data || data.schemaVersion !== SCHEMA_VERSION) return;
+
+      if (data.theme && NX.Themes) NX.Themes.apply(data.theme);
+      if (data.mode === 'light' || data.mode === 'dark') {
+        document.documentElement.dataset.mode = data.mode;
+      }
+      if (typeof data.fontSize === 'number' && data.fontSize >= FONT_MIN && data.fontSize <= FONT_MAX) {
+        document.documentElement.style.setProperty('--output-font-size', data.fontSize + 'px');
+      }
+      if (typeof data.user === 'string' && data.user.length && data.user.length <= 16) {
+        NX.State.currentUser = data.user;
+      }
+      if (typeof data.cwd === 'string') {
+        NX.State.cwd = data.cwd;
+      }
+      if (typeof data.recording === 'boolean' && NX.DVR && NX.DVR.setRecording) {
+        NX.DVR.setRecording(data.recording);
+      }
+      NX.State.firstBootSeen = !!data.firstBootSeen;
+
+      if (NX.Output && NX.Output.updatePrompt) NX.Output.updatePrompt();
+    } catch (e) {
+      warn('loadPrefsSync failed', e);
+    } finally {
+      loading = false;
+    }
   }
 
-  function escapeHtml(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function savePrefsSync() {
+    if (loading) return;
+    try {
+      var fontSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--output-font-size')) || 13.5;
+      var payload = {
+        schemaVersion: SCHEMA_VERSION,
+        theme: (NX.State.activeThemeName || 'GREEN').toLowerCase(),
+        mode: document.documentElement.dataset.mode || 'dark',
+        fontSize: fontSize,
+        user: NX.State.currentUser,
+        cwd: NX.State.cwd,
+        recording: !!(NX.DVR && NX.DVR.recordingEnabled),
+        firstBootSeen: !!NX.State.firstBootSeen,
+      };
+      localStorage.setItem(PREFS_KEY, JSON.stringify(payload));
+    } catch (e) {
+      warn('savePrefsSync failed', e);
+    }
   }
 
-  function updatePrompt() {
-    promptLbl.textContent = currentUser + '@nexterm:' + cwd + '$';
+  // ── Tier 2: IndexedDB (asynchronous) ──────────
+  function openDB() {
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise(function(resolve, reject) {
+      if (typeof indexedDB === 'undefined') {
+        reject(new Error('IndexedDB unavailable'));
+        return;
+      }
+      var req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = function() {
+        var db = req.result;
+        if (!db.objectStoreNames.contains(STORE)) {
+          db.createObjectStore(STORE, { keyPath: 'id' });
+        }
+      };
+      req.onsuccess = function() {
+        if (typeof navigator !== 'undefined' && navigator.storage && typeof navigator.storage.persist === 'function') {
+          navigator.storage.persist().catch(function() {});
+        }
+        resolve(req.result);
+      };
+      req.onerror = function() { reject(req.error); };
+      req.onblocked = function() { reject(new Error('IndexedDB open blocked')); };
+    }).catch(function(err) {
+      warn('openDB failed', err);
+      dbPromise = null;
+      throw err;
+    });
+    return dbPromise;
   }
 
-  function updateStatus() {
-    var elapsed = Math.floor((Date.now() - sessionStart) / 1000);
-    var mins = Math.floor(elapsed / 60);
-    var secs = elapsed % 60;
-    statusL.textContent = 'CMD: ' + commandCount;
-    statusR.textContent = 'SESSION ' + String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0') + ' | UTF-8';
+  function loadSessionAsync() {
+    return openDB().then(function(db) {
+      return new Promise(function(resolve) {
+        var tx = db.transaction(STORE, 'readonly');
+        var store = tx.objectStore(STORE);
+        var req = store.get(RECORD_ID);
+        req.onsuccess = function() {
+          var data = req.result;
+          if (!data || data.schemaVersion !== SCHEMA_VERSION) {
+            resolve(false);
+            return;
+          }
+          try {
+            if (data.fs && NX.FS && NX.FS.setFS) NX.FS.setFS(data.fs);
+            if (Array.isArray(data.history) && NX.History.replaceAll) NX.History.replaceAll(data.history);
+            if (Array.isArray(data.snapshots) && NX.DVR.setSnapshots) NX.DVR.setSnapshots(data.snapshots);
+            if (typeof data.currentScreen === 'string') {
+              NX.DOM.output.innerHTML = data.currentScreen;
+              NX.DOM.output.scrollTop = NX.DOM.output.scrollHeight;
+            }
+            if (typeof data.sessionStart === 'number') NX.State.sessionStart = data.sessionStart;
+            if (typeof data.commandCount === 'number') NX.State.commandCount = data.commandCount;
+            resolve(true);
+          } catch (e) {
+            warn('loadSessionAsync apply failed', e);
+            resolve(false);
+          }
+        };
+        req.onerror = function() { warn('loadSessionAsync read failed', req.error); resolve(false); };
+      });
+    }).catch(function(err) {
+      warn('loadSessionAsync failed', err);
+      return false;
+    });
   }
-  setInterval(updateStatus, 1000);
 
-  // ── Commands ──────────────────────────────────
+  function queueSessionSave() {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(function() {
+      saveTimer = null;
+      doSessionSave();
+    }, SAVE_DEBOUNCE_MS);
+  }
+
+  function doSessionSave() {
+    openDB().then(function(db) {
+      var payload = {
+        id: RECORD_ID,
+        schemaVersion: SCHEMA_VERSION,
+        fs: NX.FS.FS,
+        history: NX.History.all(),
+        snapshots: NX.DVR.snapshots.slice(),
+        currentScreen: NX.DOM.output.innerHTML,
+        sessionStart: NX.State.sessionStart,
+        commandCount: NX.State.commandCount,
+      };
+      try { lastSavedBytes = JSON.stringify(payload).length; } catch (e) { lastSavedBytes = 0; }
+      var tx = db.transaction(STORE, 'readwrite');
+      tx.objectStore(STORE).put(payload);
+      tx.oncomplete = function() { lastSaved = Date.now(); };
+      tx.onerror = function() { warn('session save tx failed', tx.error); };
+    }).catch(function(err) {
+      warn('doSessionSave failed', err);
+    });
+  }
+
+  function wipeAll() {
+    return new Promise(function(resolve) {
+      try { localStorage.removeItem(PREFS_KEY); } catch (e) { warn('wipe localStorage failed', e); }
+      if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
+      dbPromise = null;
+      if (typeof indexedDB === 'undefined') { resolve(); return; }
+      var req = indexedDB.deleteDatabase(DB_NAME);
+      req.onsuccess = function() { resolve(); };
+      req.onerror = function() { warn('wipe IDB failed', req.error); resolve(); };
+      req.onblocked = function() { warn('wipe IDB blocked'); resolve(); };
+    });
+  }
+
+  function stats() {
+    var tier1Bytes = 0;
+    try {
+      var raw = localStorage.getItem(PREFS_KEY);
+      if (raw) tier1Bytes = raw.length;
+    } catch (e) {}
+    return {
+      tier1Bytes: tier1Bytes,
+      tier2Bytes: lastSavedBytes,
+      schemaVersion: SCHEMA_VERSION,
+      lastSaved: lastSaved,
+    };
+  }
+
+  NX.Persist = {
+    SCHEMA_VERSION: SCHEMA_VERSION,
+    loadPrefsSync: loadPrefsSync,
+    savePrefsSync: savePrefsSync,
+    loadSessionAsync: loadSessionAsync,
+    queueSessionSave: queueSessionSave,
+    wipeAll: wipeAll,
+    stats: stats,
+  };
+})(window.NX = window.NX || {});
+
+/* ── dvr.js ── */
+(function(NX) {
+  var MAX_SNAPSHOTS = 200;
+  var snapshots = [];
+  var snapshotIdx = -1;
+  var isPlaying = false;
+  var playTimer = null;
+  var recordingEnabled = true;
+  var PLAY_INTERVAL = 1200;
+
+  function takeSnapshot() {
+    if (!recordingEnabled) return;
+    snapshots.push({ html: NX.DOM.output.innerHTML });
+    if (snapshots.length > MAX_SNAPSHOTS) snapshots.splice(0, snapshots.length - MAX_SNAPSHOTS);
+    if (snapshotIdx === -1) updateProgress();
+  }
+
+  function setSnapshots(newSnapshots) {
+    snapshots = Array.isArray(newSnapshots) ? newSnapshots.slice() : [];
+    if (snapshots.length > MAX_SNAPSHOTS) snapshots.splice(0, snapshots.length - MAX_SNAPSHOTS);
+    snapshotIdx = -1;
+    updateProgress();
+    updatePlaybackUI();
+  }
+
+  function setRecording(value) {
+    recordingEnabled = !!value;
+    if (NX.DOM.btnRecord) NX.DOM.btnRecord.classList.toggle('active', recordingEnabled);
+  }
+
+  function goToSnapshot(idx) {
+    if (snapshots.length === 0) return;
+    idx = Math.max(0, Math.min(idx, snapshots.length - 1));
+    snapshotIdx = idx;
+    NX.DOM.output.innerHTML = snapshots[idx].html;
+    NX.DOM.output.scrollTop = NX.DOM.output.scrollHeight;
+    updateProgress();
+    updatePlaybackUI();
+  }
+
+  function goLive() {
+    if (snapshots.length === 0) return;
+    snapshotIdx = -1;
+    NX.DOM.output.innerHTML = snapshots[snapshots.length - 1].html;
+    NX.DOM.output.scrollTop = NX.DOM.output.scrollHeight;
+    stopPlayback();
+    updateProgress();
+    updatePlaybackUI();
+  }
+
+  function updateProgress() {
+    var total = snapshots.length;
+    var current = snapshotIdx === -1 ? total : snapshotIdx + 1;
+    var pct = total === 0 ? 100 : (current / total) * 100;
+    NX.DOM.progressFill.style.width = pct + '%';
+    NX.DOM.progressLabel.textContent = current + ' / ' + total;
+  }
+
+  function updatePlaybackUI() {
+    var inPlayback = snapshotIdx !== -1;
+    NX.DOM.playbackBadge.classList.toggle('show', inPlayback || isPlaying);
+    NX.DOM.statusDot.classList.toggle('playback', inPlayback);
+    NX.DOM.statusMode.textContent = isPlaying ? 'PLAYING' : inPlayback ? 'PLAYBACK' : 'ACTIVE';
+    NX.DOM.cmdInput.disabled = inPlayback;
+    NX.DOM.cmdInput.placeholder = inPlayback ? '── playback mode ── press ⏩ to return to live' : "type 'help' to get started...";
+    NX.DOM.btnPlay.classList.toggle('active', isPlaying);
+    NX.DOM.btnPlay.classList.toggle('is-play', isPlaying);
+    NX.DOM.btnPause.classList.toggle('active', inPlayback && !isPlaying);
+  }
+
+  function startPlayback() {
+    if (snapshots.length === 0) return;
+    if (snapshotIdx === -1) snapshotIdx = 0;
+    isPlaying = true;
+    updatePlaybackUI();
+    playTimer = setInterval(function() {
+      if (snapshotIdx >= snapshots.length - 1) { stopPlayback(); return; }
+      snapshotIdx++;
+      goToSnapshot(snapshotIdx);
+    }, PLAY_INTERVAL);
+  }
+
+  function stopPlayback() {
+    isPlaying = false;
+    if (playTimer) { clearInterval(playTimer); playTimer = null; }
+    updatePlaybackUI();
+  }
+
+  function wireTransport() {
+    NX.DOM.btnRewind.addEventListener('click', function() { stopPlayback(); goToSnapshot(0); });
+    NX.DOM.btnBack.addEventListener('click', function() {
+      stopPlayback();
+      var idx = snapshotIdx === -1 ? snapshots.length - 2 : snapshotIdx - 1;
+      goToSnapshot(Math.max(0, idx));
+    });
+    NX.DOM.btnPlay.addEventListener('click', function() { if (isPlaying) stopPlayback(); else startPlayback(); });
+    NX.DOM.btnPause.addEventListener('click', function() { if (isPlaying) stopPlayback(); });
+    NX.DOM.btnAhead.addEventListener('click', function() {
+      stopPlayback();
+      if (snapshotIdx === -1) return;
+      if (snapshotIdx >= snapshots.length - 1) { goLive(); return; }
+      goToSnapshot(snapshotIdx + 1);
+    });
+    NX.DOM.btnFastFwd.addEventListener('click', function() { stopPlayback(); goLive(); });
+    NX.DOM.btnStop.addEventListener('click', function() {
+      if (snapshotIdx === -1 && !isPlaying) return;
+      goLive();
+    });
+    NX.DOM.btnRecord.addEventListener('click', function() {
+      recordingEnabled = !recordingEnabled;
+      NX.DOM.btnRecord.classList.toggle('active', recordingEnabled);
+      if (NX.Persist) NX.Persist.savePrefsSync();
+    });
+
+    NX.DOM.progressTrack.addEventListener('click', function(e) {
+      if (snapshots.length === 0) return;
+      stopPlayback();
+      var rect = NX.DOM.progressTrack.getBoundingClientRect();
+      var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      goToSnapshot(Math.round(pct * (snapshots.length - 1)));
+    });
+  }
+
+  NX.DVR = {
+    takeSnapshot: takeSnapshot,
+    goToSnapshot: goToSnapshot,
+    goLive: goLive,
+    updateProgress: updateProgress,
+    updatePlaybackUI: updatePlaybackUI,
+    startPlayback: startPlayback,
+    stopPlayback: stopPlayback,
+    wireTransport: wireTransport,
+    setSnapshots: setSnapshots,
+    setRecording: setRecording,
+    MAX: MAX_SNAPSHOTS,
+    get snapshotIdx() { return snapshotIdx; },
+    get snapshotCount() { return snapshots.length; },
+    get snapshots() { return snapshots; },
+    get isPlaying() { return isPlaying; },
+    get recordingEnabled() { return recordingEnabled; },
+  };
+})(window.NX = window.NX || {});
+
+/* ── autocomplete.js ── */
+(function(NX) {
+  function show(partial) {
+    if (!partial) { NX.DOM.acHint.classList.remove('show'); return; }
+    var matches = Object.keys(NX.Commands.COMMANDS).filter(function(c) { return c.startsWith(partial.toLowerCase()); });
+    if (matches.length && matches.length <= 8 && partial.length > 0) {
+      NX.DOM.acHint.innerHTML = matches.map(function(m) { return '<span>' + m + '</span>'; }).join('');
+      NX.DOM.acHint.classList.add('show');
+    } else {
+      NX.DOM.acHint.classList.remove('show');
+    }
+  }
+
+  function hide() { NX.DOM.acHint.classList.remove('show'); }
+
+  NX.Autocomplete = { show: show, hide: hide };
+})(window.NX = window.NX || {});
+
+/* ── commands.js ── */
+(function(NX) {
   var COMMANDS = {};
-  function register(name, desc, usage, fn) { COMMANDS[name] = { description: desc, usage: usage, fn: fn }; }
+
+  function register(name, desc, usage, fn) {
+    COMMANDS[name] = { description: desc, usage: usage, fn: fn };
+  }
 
   register('help', 'Show available commands', 'help [command]', function(args) {
     if (args.length) {
       var cmd = COMMANDS[args[0]];
-      if (!cmd) return print('help: unknown command \'' + escapeHtml(args[0]) + '\'', 'line-error');
-      print('<strong style="color:var(--term-cyan)">' + escapeHtml(args[0]) + '</strong> — ' + escapeHtml(cmd.description), 'line-info');
-      print('  Usage: ' + escapeHtml(cmd.usage), 'line-system');
+      if (!cmd) return NX.Output.print('help: unknown command \'' + NX.Output.escapeHtml(args[0]) + '\'', 'line-error');
+      NX.Output.print('<strong style="color:var(--term-cyan)">' + NX.Output.escapeHtml(args[0]) + '</strong> — ' + NX.Output.escapeHtml(cmd.description), 'line-info');
+      NX.Output.print('  Usage: ' + NX.Output.escapeHtml(cmd.usage), 'line-system');
       return;
     }
-    print('╔══════════════════════════════════════════════╗', 'line-info');
-    print('║         NEXTERM — COMMAND REFERENCE          ║', 'line-info');
-    print('╚══════════════════════════════════════════════╝', 'line-info');
-    print('');
+    NX.Output.print('╔══════════════════════════════════════════════╗', 'line-info');
+    NX.Output.print('║         NEXTERM — COMMAND REFERENCE          ║', 'line-info');
+    NX.Output.print('╚══════════════════════════════════════════════╝', 'line-info');
+    NX.Output.print('');
     var sorted = Object.keys(COMMANDS).sort();
     var maxLen = Math.max.apply(null, sorted.map(function(n) { return n.length; }));
     sorted.forEach(function(name) {
       var pad = ' '.repeat(maxLen - name.length + 2);
-      print('  <span style="color:var(--term-cyan)">' + name + '</span>' + pad + escapeHtml(COMMANDS[name].description));
+      NX.Output.print('  <span style="color:var(--term-cyan)">' + name + '</span>' + pad + NX.Output.escapeHtml(COMMANDS[name].description));
     });
-    print('');
-    print('Tip: use <span style="color:var(--term-amber)">help &lt;command&gt;</span> for detailed usage.', 'line-system');
+    NX.Output.print('');
+    NX.Output.print('Tip: use <span style="color:var(--term-amber)">help &lt;command&gt;</span> for detailed usage.', 'line-system');
   });
 
-  register('clear', 'Clear the terminal screen', 'clear', function() { output.innerHTML = ''; });
-  register('echo', 'Print text to the terminal', 'echo <text>', function(args) { print(escapeHtml(args.join(' '))); });
-  register('date', 'Show current date and time', 'date', function() { print(new Date().toString(), 'line-info'); });
-  register('whoami', 'Display the current user', 'whoami', function() { print(currentUser, 'line-success'); });
+  register('clear', 'Clear the terminal screen', 'clear', function() { NX.DOM.output.innerHTML = ''; });
+  register('echo', 'Print text to the terminal', 'echo <text>', function(args) { NX.Output.print(NX.Output.escapeHtml(args.join(' '))); });
+  register('date', 'Show current date and time', 'date', function() { NX.Output.print(new Date().toString(), 'line-info'); });
+  register('whoami', 'Display the current user', 'whoami', function() { NX.Output.print(NX.State.currentUser, 'line-success'); });
 
   register('user', 'Change the active username', 'user <name>', function(args) {
-    if (!args.length) return print('Usage: user &lt;name&gt;', 'line-warn');
+    if (!args.length) return NX.Output.print('Usage: user &lt;name&gt;', 'line-warn');
     var name = args[0].replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 16);
-    if (!name) return print('Invalid username.', 'line-error');
-    currentUser = name; updatePrompt();
-    print('User changed to <span style="color:var(--term-green)">' + escapeHtml(name) + '</span>', 'line-success');
+    if (!name) return NX.Output.print('Invalid username.', 'line-error');
+    NX.State.currentUser = name; NX.Output.updatePrompt();
+    if (NX.Persist) NX.Persist.savePrefsSync();
+    NX.Output.print('User changed to <span style="color:var(--term-green)">' + NX.Output.escapeHtml(name) + '</span>', 'line-success');
   });
 
   register('uptime', 'Show session uptime', 'uptime', function() {
-    var s = Math.floor((Date.now() - sessionStart) / 1000);
-    print('Session uptime: ' + Math.floor(s/3600) + 'h ' + Math.floor((s%3600)/60) + 'm ' + (s%60) + 's', 'line-info');
+    var s = Math.floor((Date.now() - NX.State.sessionStart) / 1000);
+    NX.Output.print('Session uptime: ' + Math.floor(s/3600) + 'h ' + Math.floor((s%3600)/60) + 'm ' + (s%60) + 's', 'line-info');
   });
 
   register('ls', 'List directory contents', 'ls [path]', function(args) {
-    var target = args[0] || cwd;
-    var parts = resolvePath(target);
-    var node = getNode(parts);
-    if (!node) return print('ls: cannot access \'' + escapeHtml(target) + '\': No such file or directory', 'line-error');
-    if (node.type !== 'dir') return print(escapeHtml(target), 'line-info');
+    var target = args[0] || NX.State.cwd;
+    var parts = NX.FS.resolvePath(target);
+    var node = NX.FS.getNode(parts);
+    if (!node) return NX.Output.print('ls: cannot access \'' + NX.Output.escapeHtml(target) + '\': No such file or directory', 'line-error');
+    if (node.type !== 'dir') return NX.Output.print(NX.Output.escapeHtml(target), 'line-info');
     var names = Object.keys(node.children).sort();
-    if (!names.length) return print('(empty directory)', 'line-system');
+    if (!names.length) return NX.Output.print('(empty directory)', 'line-system');
     var items = names.map(function(n) {
       var child = node.children[n];
       return child.type === 'dir'
-        ? '<span style="color:var(--term-cyan);font-weight:600">' + escapeHtml(n) + '/</span>'
-        : '<span style="color:var(--term-text)">' + escapeHtml(n) + '</span>';
+        ? '<span style="color:var(--term-cyan);font-weight:600">' + NX.Output.escapeHtml(n) + '/</span>'
+        : '<span style="color:var(--term-text)">' + NX.Output.escapeHtml(n) + '</span>';
     });
-    print(items.join('    '));
+    NX.Output.print(items.join('    '));
   });
 
   register('cd', 'Change directory', 'cd <path>', function(args) {
-    if (!args.length || args[0] === '~') { cwd = '~'; updatePrompt(); return; }
-    var parts = resolvePath(args[0]);
-    var node = getNode(parts);
-    if (!node) return print('cd: no such directory: ' + escapeHtml(args[0]), 'line-error');
-    if (node.type !== 'dir') return print('cd: not a directory: ' + escapeHtml(args[0]), 'line-error');
-    cwd = getAbsPath(parts); updatePrompt();
+    if (!args.length || args[0] === '~') {
+      NX.State.cwd = '~'; NX.Output.updatePrompt();
+      if (NX.Persist) NX.Persist.savePrefsSync();
+      return;
+    }
+    var parts = NX.FS.resolvePath(args[0]);
+    var node = NX.FS.getNode(parts);
+    if (!node) return NX.Output.print('cd: no such directory: ' + NX.Output.escapeHtml(args[0]), 'line-error');
+    if (node.type !== 'dir') return NX.Output.print('cd: not a directory: ' + NX.Output.escapeHtml(args[0]), 'line-error');
+    NX.State.cwd = NX.FS.getAbsPath(parts); NX.Output.updatePrompt();
+    if (NX.Persist) NX.Persist.savePrefsSync();
   });
 
   register('pwd', 'Print working directory', 'pwd', function() {
-    print('/home/' + currentUser + (cwd === '~' ? '' : cwd.slice(1)), 'line-info');
+    NX.Output.print('/home/' + NX.State.currentUser + (NX.State.cwd === '~' ? '' : NX.State.cwd.slice(1)), 'line-info');
   });
 
   register('cat', 'Display file contents', 'cat <file>', function(args) {
-    if (!args.length) return print('Usage: cat &lt;file&gt;', 'line-warn');
-    var parts = resolvePath(args[0]);
-    var node = getNode(parts);
-    if (!node) return print('cat: ' + escapeHtml(args[0]) + ': No such file or directory', 'line-error');
-    if (node.type === 'dir') return print('cat: ' + escapeHtml(args[0]) + ': Is a directory', 'line-error');
-    print(escapeHtml(node.content));
+    if (!args.length) return NX.Output.print('Usage: cat &lt;file&gt;', 'line-warn');
+    var parts = NX.FS.resolvePath(args[0]);
+    var node = NX.FS.getNode(parts);
+    if (!node) return NX.Output.print('cat: ' + NX.Output.escapeHtml(args[0]) + ': No such file or directory', 'line-error');
+    if (node.type === 'dir') return NX.Output.print('cat: ' + NX.Output.escapeHtml(args[0]) + ': Is a directory', 'line-error');
+    NX.Output.print(NX.Output.escapeHtml(node.content));
   });
 
   register('mkdir', 'Create a directory', 'mkdir <name>', function(args) {
-    if (!args.length) return print('Usage: mkdir &lt;name&gt;', 'line-warn');
-    var cwdParts = resolvePath('.');
-    var parent = getNode(cwdParts);
-    if (!parent || parent.type !== 'dir') return print('mkdir: cannot create directory', 'line-error');
+    if (!args.length) return NX.Output.print('Usage: mkdir &lt;name&gt;', 'line-warn');
+    var cwdParts = NX.FS.resolvePath('.');
+    var parent = NX.FS.getNode(cwdParts);
+    if (!parent || parent.type !== 'dir') return NX.Output.print('mkdir: cannot create directory', 'line-error');
     var name = args[0].replace(/\//g, '');
-    if (parent.children[name]) return print('mkdir: \'' + escapeHtml(name) + '\' already exists', 'line-error');
+    if (parent.children[name]) return NX.Output.print('mkdir: \'' + NX.Output.escapeHtml(name) + '\' already exists', 'line-error');
     parent.children[name] = { type: 'dir', children: {} };
-    print('Directory created: ' + escapeHtml(name) + '/', 'line-success');
+    NX.Output.print('Directory created: ' + NX.Output.escapeHtml(name) + '/', 'line-success');
   });
 
   register('touch', 'Create an empty file', 'touch <name>', function(args) {
-    if (!args.length) return print('Usage: touch &lt;name&gt;', 'line-warn');
-    var cwdParts = resolvePath('.');
-    var parent = getNode(cwdParts);
-    if (!parent || parent.type !== 'dir') return print('touch: cannot create file', 'line-error');
+    if (!args.length) return NX.Output.print('Usage: touch &lt;name&gt;', 'line-warn');
+    var cwdParts = NX.FS.resolvePath('.');
+    var parent = NX.FS.getNode(cwdParts);
+    if (!parent || parent.type !== 'dir') return NX.Output.print('touch: cannot create file', 'line-error');
     var name = args[0].replace(/\//g, '');
-    if (parent.children[name]) return print('touch: \'' + escapeHtml(name) + '\' already exists', 'line-warn');
+    if (parent.children[name]) return NX.Output.print('touch: \'' + NX.Output.escapeHtml(name) + '\' already exists', 'line-warn');
     parent.children[name] = { type: 'file', content: '' };
-    print('File created: ' + escapeHtml(name), 'line-success');
+    NX.Output.print('File created: ' + NX.Output.escapeHtml(name), 'line-success');
   });
 
   register('write', 'Write content to a file', 'write <file> <content>', function(args) {
-    if (args.length < 2) return print('Usage: write &lt;file&gt; &lt;content&gt;', 'line-warn');
-    var parts = resolvePath(args[0]);
-    var node = getNode(parts);
-    if (!node) return print('write: ' + escapeHtml(args[0]) + ': No such file', 'line-error');
-    if (node.type === 'dir') return print('write: ' + escapeHtml(args[0]) + ': Is a directory', 'line-error');
+    if (args.length < 2) return NX.Output.print('Usage: write &lt;file&gt; &lt;content&gt;', 'line-warn');
+    var parts = NX.FS.resolvePath(args[0]);
+    var node = NX.FS.getNode(parts);
+    if (!node) return NX.Output.print('write: ' + NX.Output.escapeHtml(args[0]) + ': No such file', 'line-error');
+    if (node.type === 'dir') return NX.Output.print('write: ' + NX.Output.escapeHtml(args[0]) + ': Is a directory', 'line-error');
     node.content = args.slice(1).join(' ');
-    print('Written to ' + escapeHtml(args[0]), 'line-success');
+    NX.Output.print('Written to ' + NX.Output.escapeHtml(args[0]), 'line-success');
   });
 
   register('rm', 'Remove a file', 'rm <file>', function(args) {
-    if (!args.length) return print('Usage: rm &lt;file&gt;', 'line-warn');
-    var pathParts = resolvePath(args[0]);
-    if (pathParts.length === 0) return print('rm: cannot remove root', 'line-error');
+    if (!args.length) return NX.Output.print('Usage: rm &lt;file&gt;', 'line-warn');
+    var pathParts = NX.FS.resolvePath(args[0]);
+    if (pathParts.length === 0) return NX.Output.print('rm: cannot remove root', 'line-error');
     var parentParts = pathParts.slice(0, -1);
-    var parent = getNode(parentParts);
+    var parent = NX.FS.getNode(parentParts);
     var name = pathParts[pathParts.length - 1];
-    if (!parent || !parent.children[name]) return print('rm: \'' + escapeHtml(args[0]) + '\': not found', 'line-error');
+    if (!parent || !parent.children[name]) return NX.Output.print('rm: \'' + NX.Output.escapeHtml(args[0]) + '\': not found', 'line-error');
     delete parent.children[name];
-    print('Removed: ' + escapeHtml(args[0]), 'line-success');
+    NX.Output.print('Removed: ' + NX.Output.escapeHtml(args[0]), 'line-success');
   });
 
   register('tree', 'Show directory tree', 'tree [path]', function(args) {
-    var target = args[0] || cwd;
-    var parts = resolvePath(target);
-    var node = getNode(parts);
-    if (!node || node.type !== 'dir') return print('tree: \'' + escapeHtml(target) + '\' is not a directory', 'line-error');
+    var target = args[0] || NX.State.cwd;
+    var parts = NX.FS.resolvePath(target);
+    var node = NX.FS.getNode(parts);
+    if (!node || node.type !== 'dir') return NX.Output.print('tree: \'' + NX.Output.escapeHtml(target) + '\' is not a directory', 'line-error');
     function walk(n, prefix) {
       var keys = Object.keys(n.children).sort();
       keys.forEach(function(k, i) {
         var last = i === keys.length - 1;
         var child = n.children[k];
         var label = child.type === 'dir'
-          ? '<span style="color:var(--term-cyan)">' + escapeHtml(k) + '/</span>' : escapeHtml(k);
-        print(prefix + (last ? '└── ' : '├── ') + label);
+          ? '<span style="color:var(--term-cyan)">' + NX.Output.escapeHtml(k) + '/</span>' : NX.Output.escapeHtml(k);
+        NX.Output.print(prefix + (last ? '└── ' : '├── ') + label);
         if (child.type === 'dir') walk(child, prefix + (last ? '    ' : '│   '));
       });
     }
-    print('<span style="color:var(--term-cyan)">' + escapeHtml(getAbsPath(parts)) + '</span>');
+    NX.Output.print('<span style="color:var(--term-cyan)">' + NX.Output.escapeHtml(NX.FS.getAbsPath(parts)) + '</span>');
     walk(node, '');
   });
 
   register('calc', 'Evaluate a math expression', 'calc <expr>', function(args) {
-    if (!args.length) return print('Usage: calc &lt;expression&gt;', 'line-warn');
+    if (!args.length) return NX.Output.print('Usage: calc &lt;expression&gt;', 'line-warn');
     try {
       var expr = args.join(' ').replace(/[^0-9+\-*/().%\s]/g, '');
       var result = Function('"use strict"; return (' + expr + ')')();
-      print('= <span style="color:var(--term-green);font-weight:600">' + result + '</span>', 'line-success');
-    } catch(e) { print('calc: invalid expression', 'line-error'); }
+      NX.Output.print('= <span style="color:var(--term-green);font-weight:600">' + result + '</span>', 'line-success');
+    } catch(e) { NX.Output.print('calc: invalid expression', 'line-error'); }
   });
 
   register('weather', 'Mock weather report', 'weather [city]', function(args) {
@@ -1229,15 +1606,15 @@
     var temp = [62,65,70,74,78,82,85,88][Math.floor(Math.random()*8)];
     var conds = ['Clear','Partly Cloudy','Rain','Mostly Sunny'];
     var cond = conds[Math.floor(Math.random()*4)];
-    print('┌─────────────────────────────────┐');
-    print('│  Weather: <span style="color:var(--term-amber)">' + escapeHtml(city) + '</span>');
-    print('│  Temp: <span style="color:var(--term-green)">' + temp + ' F</span>  |  Cond: ' + cond);
-    print('│  Wind: ' + (Math.floor(Math.random()*20)+3) + ' mph  |  Humid: ' + (Math.floor(Math.random()*60)+30) + '%');
-    print('└─────────────────────────────────┘');
+    NX.Output.print('┌─────────────────────────────────┐');
+    NX.Output.print('│  Weather: <span style="color:var(--term-amber)">' + NX.Output.escapeHtml(city) + '</span>');
+    NX.Output.print('│  Temp: <span style="color:var(--term-green)">' + temp + ' F</span>  |  Cond: ' + cond);
+    NX.Output.print('│  Wind: ' + (Math.floor(Math.random()*20)+3) + ' mph  |  Humid: ' + (Math.floor(Math.random()*60)+30) + '%');
+    NX.Output.print('└─────────────────────────────────┘');
   });
 
   register('colors', 'Show color palette', 'colors', function() {
-    print('<span style="color:var(--term-green)">##</span> Green  <span style="color:var(--term-cyan)">##</span> Cyan  <span style="color:var(--term-amber)">##</span> Amber  <span style="color:var(--term-red)">##</span> Red  <span style="color:var(--term-magenta)">##</span> Magenta');
+    NX.Output.print('<span style="color:var(--term-green)">##</span> Green  <span style="color:var(--term-cyan)">##</span> Cyan  <span style="color:var(--term-amber)">##</span> Amber  <span style="color:var(--term-red)">##</span> Red  <span style="color:var(--term-magenta)">##</span> Magenta');
   });
 
   register('joke', 'Tell a programming joke', 'joke', function() {
@@ -1246,74 +1623,113 @@
       'A SQL query walks into a bar, sees two tables and asks...\n"Can I JOIN you?"',
       '!false -- It is funny because it is true.',
     ];
-    print(jokes[Math.floor(Math.random() * jokes.length)], 'line-info');
+    NX.Output.print(jokes[Math.floor(Math.random() * jokes.length)], 'line-info');
   });
 
   register('fortune', 'Random fortune', 'fortune', function() {
-    print('> ' + FORTUNES[Math.floor(Math.random() * FORTUNES.length)], 'line-accent');
+    NX.Output.print('> ' + NX.State.FORTUNES[Math.floor(Math.random() * NX.State.FORTUNES.length)], 'line-accent');
   });
 
+  function humanSince(ts) {
+    if (!ts) return '—';
+    var elapsed = Math.floor((Date.now() - ts) / 1000);
+    if (elapsed < 2) return 'just now';
+    if (elapsed < 60) return elapsed + 's ago';
+    if (elapsed < 3600) return Math.floor(elapsed / 60) + 'm ago';
+    return Math.floor(elapsed / 3600) + 'h ago';
+  }
+
+  function formatBytes(n) {
+    if (n < 1024) return n + ' B';
+    if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+    return (n / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
   register('sysinfo', 'Display system information', 'sysinfo', function() {
-    printTable(['Property', 'Value'], [
+    var rows = [
       ['OS', '<span style="color:var(--term-cyan)">NEXTERM/Web 3.2</span>'],
       ['Shell', '<span style="color:var(--term-text)">nxsh 3.2.0</span>'],
-      ['User', '<span style="color:var(--term-green)">' + escapeHtml(currentUser) + '</span>'],
+      ['User', '<span style="color:var(--term-green)">' + NX.Output.escapeHtml(NX.State.currentUser) + '</span>'],
       ['Resolution', '<span style="color:var(--term-text)">' + window.innerWidth + 'x' + window.innerHeight + '</span>'],
       ['Commands', '<span style="color:var(--term-amber)">' + Object.keys(COMMANDS).length + ' loaded</span>'],
-      ['Snapshots', '<span style="color:var(--term-amber)">' + snapshots.length + ' recorded</span>'],
-      ['Recording', '<span style="color:' + (recordingEnabled ? 'var(--term-green)' : 'var(--term-amber)') + '">' + (recordingEnabled ? 'ON' : 'OFF') + '</span>'],
-    ]);
+      ['Snapshots', '<span style="color:var(--term-amber)">' + NX.DVR.snapshotCount + ' recorded</span>'],
+      ['Recording', '<span style="color:' + (NX.DVR.recordingEnabled ? 'var(--term-green)' : 'var(--term-amber)') + '">' + (NX.DVR.recordingEnabled ? 'ON' : 'OFF') + '</span>'],
+    ];
+    if (NX.Persist && NX.Persist.stats) {
+      var s = NX.Persist.stats();
+      rows.push(['Persist', '<span style="color:var(--term-green)">ENABLED</span>']);
+      rows.push(['Tier 1', '<span style="color:var(--term-text)">' + formatBytes(s.tier1Bytes) + ' (localStorage)</span>']);
+      rows.push(['Tier 2', '<span style="color:var(--term-text)">~' + formatBytes(s.tier2Bytes) + ' (IndexedDB)</span>']);
+      rows.push(['Schema', '<span style="color:var(--term-text)">v' + s.schemaVersion + '</span>']);
+      rows.push(['Last saved', '<span style="color:var(--term-muted)">' + humanSince(s.lastSaved) + '</span>']);
+    }
+    NX.Output.printTable(['Property', 'Value'], rows);
   });
 
   register('history', 'Show command history', 'history', function() {
-    if (!history.length) return print('No commands in history.', 'line-system');
-    history.forEach(function(cmd, i) {
-      print('  <span style="color:var(--term-muted)">' + String(i+1).padStart(4) + '</span>  ' + escapeHtml(cmd));
+    var entries = NX.History.all();
+    if (!entries.length) return NX.Output.print('No commands in history.', 'line-system');
+    entries.forEach(function(cmd, i) {
+      NX.Output.print('  <span style="color:var(--term-muted)">' + String(i+1).padStart(4) + '</span>  ' + NX.Output.escapeHtml(cmd));
     });
   });
 
   register('theme', 'Switch color theme', 'theme <green|amber|cyan|red>', function(args) {
-    var themes = {
-      green: { main: '#7ed957', glow: 'rgba(126,217,87,0.20)' },
-      amber: { main: '#e8a93b', glow: 'rgba(232,169,59,0.20)' },
-      cyan:  { main: '#5cc4d6', glow: 'rgba(92,196,214,0.20)' },
-      red:   { main: '#e06b6b', glow: 'rgba(224,107,107,0.20)' },
-    };
-    var t = themes[args[0]];
-    if (!t) return print('Available themes: ' + Object.keys(themes).join(', '), 'line-warn');
-    document.documentElement.style.setProperty('--term-green', t.main);
-    document.documentElement.style.setProperty('--term-green-glow', t.glow);
-    activeThemeName = args[0].toUpperCase();
-    print('Theme changed to <span style="color:' + t.main + '">' + args[0] + '</span>', 'line-success');
+    var t = NX.Themes.apply(args[0]);
+    if (!t) return NX.Output.print('Available themes: ' + NX.Themes.names().join(', '), 'line-warn');
+    NX.Output.print('Theme changed to <span style="color:' + t.main + '">' + args[0] + '</span>', 'line-success');
   });
 
   register('banner', 'Display the NEXTERM banner', 'banner', function() {
-    var art = '\n ███╗   ██╗███████╗██╗  ██╗████████╗███████╗██████╗ ███╗   ███╗\n ████╗  ██║██╔════╝╚██╗██╔╝╚══██╔══╝██╔════╝██╔══██╗████╗ ████║\n ██╔██╗ ██║█████╗   ╚███╔╝    ██║   █████╗  ██████╔╝██╔████╔██║\n ██║╚██╗██║██╔══╝   ██╔██╗    ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║\n ██║ ╚████║███████╗██╔╝ ██╗   ██║   ███████╗██║  ██║██║ ╚═╝ ██║\n ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝';
-    print('<span class="ascii-art">' + art + '</span>');
-    print('');
-    print('  <span style="color:var(--term-muted)">Web Terminal Emulator v3.2 | Type <span style="color:var(--term-amber)">help</span> to begin</span>');
+    NX.Output.print('<span class="nexterm-wordmark">NEXTERM</span> <span style="color:var(--term-muted)">// Web Terminal v3.2</span>');
+    NX.Output.print('Type <span style="color:var(--term-amber)">help</span> to begin.', 'line-system');
   });
 
   register('export', 'Export terminal output', 'export', function() {
-    var text = output.innerText;
+    var text = NX.DOM.output.innerText;
     var blob = new Blob([text], { type: 'text/plain' });
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob); a.download = 'nexterm-session.txt'; a.click();
-    print('Session exported.', 'line-success');
+    NX.Output.print('Session exported.', 'line-success');
   });
 
-  // ── Execution ─────────────────────────────────
+  var pendingWipe = false;
+
+  register('wipe', 'Erase all persisted state and reload', 'wipe', function() {
+    NX.Output.print('⚠  This will erase all persisted state: history, filesystem, DVR timeline,', 'line-warn');
+    NX.Output.print('    theme, font size, username, recording flag, and current screen.', 'line-warn');
+    NX.Output.print('    Type <span style="color:var(--term-green)">yes</span> to confirm, anything else to cancel.', 'line-warn');
+    pendingWipe = true;
+  });
+
   function execute(input, skipSnapshot) {
     var trimmed = input.trim();
     if (!trimmed) return;
 
-    if (snapshotIdx !== -1) goLive();
+    if (NX.DVR.snapshotIdx !== -1) NX.DVR.goLive();
 
-    history.push(trimmed);
-    historyIdx = history.length;
-    commandCount++;
+    // Handle pending wipe confirmation before anything else
+    if (pendingWipe) {
+      pendingWipe = false;
+      NX.Output.printPromptEcho(trimmed);
+      if (trimmed === 'yes') {
+        NX.Output.print('✓  Persisted state wiped. Reloading...', 'line-success');
+        if (NX.Persist && NX.Persist.wipeAll) {
+          NX.Persist.wipeAll().then(function() { location.reload(); });
+        } else {
+          location.reload();
+        }
+      } else {
+        NX.Output.print('cancelled', 'line-system');
+      }
+      if (!skipSnapshot) NX.DVR.takeSnapshot();
+      return;
+    }
 
-    printPromptEcho(trimmed);
+    NX.History.push(trimmed);
+    NX.State.commandCount++;
+
+    NX.Output.printPromptEcho(trimmed);
 
     var parts = trimmed.match(/(?:[^\s"]+|"[^"]*")+/g) || [];
     var cmd = parts[0].toLowerCase();
@@ -1322,170 +1738,23 @@
     if (COMMANDS[cmd]) {
       COMMANDS[cmd].fn(args);
     } else {
-      print('nexterm: command not found: <span style="color:var(--term-red)">' + escapeHtml(cmd) + '</span>', 'line-error');
+      NX.Output.print('nexterm: command not found: <span style="color:var(--term-red)">' + NX.Output.escapeHtml(cmd) + '</span>', 'line-error');
       var suggestions = Object.keys(COMMANDS).filter(function(c) { return c.startsWith(cmd.slice(0, 2)); });
       if (suggestions.length) {
-        print('Did you mean: ' + suggestions.map(function(s) { return '<span style="color:var(--term-cyan)">' + s + '</span>'; }).join(', ') + '?', 'line-system');
+        NX.Output.print('Did you mean: ' + suggestions.map(function(s) { return '<span style="color:var(--term-cyan)">' + s + '</span>'; }).join(', ') + '?', 'line-system');
       }
     }
 
-    if (!skipSnapshot) takeSnapshot();
+    if (!skipSnapshot) NX.DVR.takeSnapshot();
+    if (NX.Persist && NX.Persist.queueSessionSave) NX.Persist.queueSessionSave();
   }
 
-  // ── Autocomplete ──────────────────────────────
-  function showAutocomplete(partial) {
-    if (!partial) { acHint.classList.remove('show'); return; }
-    var matches = Object.keys(COMMANDS).filter(function(c) { return c.startsWith(partial.toLowerCase()); });
-    if (matches.length && matches.length <= 8 && partial.length > 0) {
-      acHint.innerHTML = matches.map(function(m) { return '<span>' + m + '</span>'; }).join('');
-      acHint.classList.add('show');
-    } else { acHint.classList.remove('show'); }
-  }
+  NX.Commands = { COMMANDS: COMMANDS, register: register, execute: execute };
+})(window.NX = window.NX || {});
 
-  // ── Input ─────────────────────────────────────
-  cmdInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      acHint.classList.remove('show');
-      execute(cmdInput.value);
-      cmdInput.value = '';
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (historyIdx > 0) { historyIdx--; cmdInput.value = history[historyIdx]; }
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (historyIdx < history.length - 1) { historyIdx++; cmdInput.value = history[historyIdx]; }
-      else { historyIdx = history.length; cmdInput.value = ''; }
-    } else if (e.key === 'Tab') {
-      e.preventDefault();
-      var partial = cmdInput.value.trim().toLowerCase();
-      var matches = Object.keys(COMMANDS).filter(function(c) { return c.startsWith(partial); });
-      if (matches.length === 1) { cmdInput.value = matches[0] + ' '; acHint.classList.remove('show'); }
-    } else if (e.key === 'l' && e.ctrlKey) {
-      e.preventDefault();
-      output.innerHTML = '';
-    }
-  });
-
-  cmdInput.addEventListener('input', function() {
-    showAutocomplete(cmdInput.value.split(' ')[0]);
-  });
-
-  document.querySelector('.terminal').addEventListener('click', function(e) {
-    if (!e.target.closest('.playback-surface')) cmdInput.focus();
-  });
-
-  // ── Keyboard shortcuts for transport ──────────
-  document.addEventListener('keydown', function(e) {
-    if (document.activeElement === cmdInput && snapshotIdx === -1) return;
-    if (e.key === 'Home') { e.preventDefault(); stopPlayback(); goToSnapshot(0); }
-    if (e.key === 'End') { e.preventDefault(); goLive(); }
-    if (e.key === 'ArrowLeft' && document.activeElement !== cmdInput) {
-      e.preventDefault(); stopPlayback();
-      var idx = snapshotIdx === -1 ? snapshots.length - 2 : snapshotIdx - 1;
-      goToSnapshot(Math.max(0, idx));
-    }
-    if (e.key === 'ArrowRight' && document.activeElement !== cmdInput) {
-      e.preventDefault(); stopPlayback();
-      if (snapshotIdx === -1) return;
-      if (snapshotIdx >= snapshots.length - 1) goLive();
-      else goToSnapshot(snapshotIdx + 1);
-    }
-    if (e.key === ' ' && snapshotIdx !== -1) {
-      e.preventDefault();
-      isPlaying ? stopPlayback() : startPlayback();
-    }
-  });
-
-  // ── Device Controls ───────────────────────────
-  const modeToggle = document.getElementById('modeToggle');
-  modeToggle.addEventListener('click', function() {
-    var isLight = document.documentElement.dataset.mode === 'light';
-    document.documentElement.dataset.mode = isLight ? 'dark' : 'light';
-  });
-
-  const fontKnob = document.getElementById('fontKnob');
-  const fontKnobMount = fontKnob.closest('.font-knob-mount');
-  const fontKnobTooltip = document.getElementById('fontKnobTooltip');
-  const FONT_MIN = 11;
-  const FONT_MAX = 22;
-  const WHEEL_SCROLL_PER_PX = 12;
-  let currentFontSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--output-font-size')) || 13.5;
-  let dragStartY = 0;
-  let dragStartSize = 0;
-
-  function applyFontSize(size) {
-    currentFontSize = Math.max(FONT_MIN, Math.min(FONT_MAX, size));
-    document.documentElement.style.setProperty('--output-font-size', currentFontSize + 'px');
-    fontKnobTooltip.textContent = Math.round(currentFontSize) + 'px';
-    var offset = (currentFontSize - FONT_MIN) * WHEEL_SCROLL_PER_PX;
-    fontKnob.style.backgroundPositionY = '-' + offset + 'px';
-  }
-  applyFontSize(currentFontSize);
-
-  function onFontDragMove(e) {
-    var delta = dragStartY - e.clientY;
-    applyFontSize(dragStartSize + delta * 0.06);
-  }
-  function onFontDragEnd() {
-    window.removeEventListener('mousemove', onFontDragMove);
-    window.removeEventListener('mouseup', onFontDragEnd);
-    setTimeout(function() { fontKnobMount.classList.remove('dragging'); }, 600);
-  }
-  fontKnob.addEventListener('mousedown', function(e) {
-    e.preventDefault();
-    dragStartY = e.clientY;
-    dragStartSize = currentFontSize;
-    fontKnobMount.classList.add('dragging');
-    window.addEventListener('mousemove', onFontDragMove);
-    window.addEventListener('mouseup', onFontDragEnd);
-  });
-
-  // ── Stardate Panel ────────────────────────────
-  const stardateClock = document.getElementById('stardateClock');
-  const stardateDow   = document.getElementById('stardateDow');
-  const stardateDate  = document.getElementById('stardateDate');
-  const DAY_NAMES   = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
-  const MONTH_NAMES = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-
-  function pad2(n) { return (n < 10 ? '0' : '') + n; }
-
-  let clockTimer = null;
-
-  function tickClock() {
-    var d = new Date();
-    stardateClock.innerHTML =
-      pad2(d.getHours()) +
-      '<span class="stardate-clock-colon">:</span>' +
-      pad2(d.getMinutes()) +
-      '<span class="stardate-clock-colon">:</span>' +
-      pad2(d.getSeconds());
-    stardateDow.textContent = DAY_NAMES[d.getDay()];
-    stardateDate.textContent = pad2(d.getDate()) + ' ' + MONTH_NAMES[d.getMonth()] + ' ' + d.getFullYear();
-  }
-
-  function startStardateTimers() {
-    if (clockTimer === null) clockTimer = setInterval(tickClock, 1000);
-  }
-
-  function stopStardateTimers() {
-    if (clockTimer !== null) { clearInterval(clockTimer); clockTimer = null; }
-  }
-
-  tickClock();
-  startStardateTimers();
-
-  document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'hidden') {
-      stopStardateTimers();
-    } else {
-      tickClock();
-      startStardateTimers();
-    }
-  });
-
-  // ── Boot ──────────────────────────────────────
-  async function boot() {
+/* ── boot.js ── */
+(function(NX) {
+  async function start() {
     var lines = [
       'BIOS POST... OK',
       'Detecting hardware... CPU: WebCore vHost',
@@ -1500,26 +1769,185 @@
 
     for (var i = 0; i < lines.length; i++) {
       await new Promise(function(r) { setTimeout(r, 120 + Math.random() * 80); });
-      bootTxt.innerHTML += lines[i] + '\n';
+      NX.DOM.bootTxt.innerHTML += lines[i] + '\n';
     }
 
     await new Promise(function(r) { setTimeout(r, 400); });
-    bootOvl.classList.add('done');
+    NX.DOM.bootOvl.classList.add('done');
     await new Promise(function(r) { setTimeout(r, 500); });
-    bootOvl.remove();
+    NX.DOM.bootOvl.remove();
 
-    execute('banner', true);
-    print('');
-    print('Welcome to <span style="color:var(--term-green)">NEXTERM</span> — your browser-based terminal.', 'line-system');
-    print('');
+    var loaded = false;
+    if (NX.Persist && NX.Persist.loadSessionAsync) {
+      try { loaded = await NX.Persist.loadSessionAsync(); } catch (e) { loaded = false; }
+    }
 
-    takeSnapshot();
-    updatePlaybackUI();
-    cmdInput.focus();
+    if (!loaded) {
+      NX.Commands.execute('banner', true);
+      NX.Output.print('');
+      NX.Output.print('Welcome to <span style="color:var(--term-green)">NEXTERM</span> — your browser-based terminal.', 'line-system');
+      NX.Output.print('');
+    }
+
+    if (!NX.State.firstBootSeen) {
+      NX.Output.print('  <span style="color:var(--term-amber)">PERSISTENCE: ENABLED</span>  ·  type <span style="color:var(--term-green)">wipe</span> to clear', 'line-system');
+      NX.Output.print('');
+      NX.State.firstBootSeen = true;
+      if (NX.Persist && NX.Persist.savePrefsSync) NX.Persist.savePrefsSync();
+    }
+
+    if (!loaded) NX.DVR.takeSnapshot();
+    NX.DVR.updatePlaybackUI();
+    NX.DOM.cmdInput.focus();
   }
 
-  boot();
-})();
+  NX.Boot = { start: start };
+})(window.NX = window.NX || {});
+
+/* ── main.js ── */
+(function(NX) {
+  // Apply Tier 1 prefs BEFORE first paint so theme/mode/font are right from frame 1
+  if (NX.Persist && NX.Persist.loadPrefsSync) NX.Persist.loadPrefsSync();
+
+  setInterval(NX.Output.updateStatus, 1000);
+
+  NX.DVR.wireTransport();
+
+  NX.DOM.cmdInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      NX.Autocomplete.hide();
+      NX.Commands.execute(NX.DOM.cmdInput.value);
+      NX.DOM.cmdInput.value = '';
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      var back = NX.History.back();
+      if (back !== undefined) NX.DOM.cmdInput.value = back;
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      var fwd = NX.History.forward();
+      if (fwd !== undefined) NX.DOM.cmdInput.value = fwd;
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      var partial = NX.DOM.cmdInput.value.trim().toLowerCase();
+      var matches = Object.keys(NX.Commands.COMMANDS).filter(function(c) { return c.startsWith(partial); });
+      if (matches.length === 1) { NX.DOM.cmdInput.value = matches[0] + ' '; NX.Autocomplete.hide(); }
+    } else if (e.key === 'l' && e.ctrlKey) {
+      e.preventDefault();
+      NX.DOM.output.innerHTML = '';
+    }
+  });
+
+  NX.DOM.cmdInput.addEventListener('input', function() {
+    NX.Autocomplete.show(NX.DOM.cmdInput.value.split(' ')[0]);
+  });
+
+  NX.DOM.terminal.addEventListener('click', function(e) {
+    if (!e.target.closest('.playback-surface')) NX.DOM.cmdInput.focus();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (document.activeElement === NX.DOM.cmdInput && NX.DVR.snapshotIdx === -1) return;
+    if (e.key === 'Home') { e.preventDefault(); NX.DVR.stopPlayback(); NX.DVR.goToSnapshot(0); }
+    if (e.key === 'End') { e.preventDefault(); NX.DVR.goLive(); }
+    if (e.key === 'ArrowLeft' && document.activeElement !== NX.DOM.cmdInput) {
+      e.preventDefault(); NX.DVR.stopPlayback();
+      var idx = NX.DVR.snapshotIdx === -1 ? NX.DVR.snapshotCount - 2 : NX.DVR.snapshotIdx - 1;
+      NX.DVR.goToSnapshot(Math.max(0, idx));
+    }
+    if (e.key === 'ArrowRight' && document.activeElement !== NX.DOM.cmdInput) {
+      e.preventDefault(); NX.DVR.stopPlayback();
+      if (NX.DVR.snapshotIdx === -1) return;
+      if (NX.DVR.snapshotIdx >= NX.DVR.snapshotCount - 1) NX.DVR.goLive();
+      else NX.DVR.goToSnapshot(NX.DVR.snapshotIdx + 1);
+    }
+    if (e.key === ' ' && NX.DVR.snapshotIdx !== -1) {
+      e.preventDefault();
+      NX.DVR.isPlaying ? NX.DVR.stopPlayback() : NX.DVR.startPlayback();
+    }
+  });
+
+  NX.DOM.modeToggle.addEventListener('click', NX.Themes.toggleMode);
+
+  var FONT_MIN = 11;
+  var FONT_MAX = 22;
+  var WHEEL_SCROLL_PER_PX = 12;
+  var currentFontSize = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--output-font-size')) || 13.5;
+  var dragStartY = 0;
+  var dragStartSize = 0;
+
+  var fontSaveTimer = null;
+  function queueFontSave() {
+    if (fontSaveTimer) clearTimeout(fontSaveTimer);
+    fontSaveTimer = setTimeout(function() {
+      fontSaveTimer = null;
+      if (NX.Persist) NX.Persist.savePrefsSync();
+    }, 200);
+  }
+
+  function applyFontSize(size) {
+    currentFontSize = Math.max(FONT_MIN, Math.min(FONT_MAX, size));
+    document.documentElement.style.setProperty('--output-font-size', currentFontSize + 'px');
+    NX.DOM.fontKnobTooltip.textContent = Math.round(currentFontSize) + 'px';
+    var offset = (currentFontSize - FONT_MIN) * WHEEL_SCROLL_PER_PX;
+    NX.DOM.fontKnob.style.backgroundPositionY = '-' + offset + 'px';
+  }
+  applyFontSize(currentFontSize);
+
+  function onFontDragMove(e) {
+    var delta = dragStartY - e.clientY;
+    applyFontSize(dragStartSize + delta * 0.06);
+    queueFontSave();
+  }
+  function onFontDragEnd() {
+    window.removeEventListener('mousemove', onFontDragMove);
+    window.removeEventListener('mouseup', onFontDragEnd);
+    setTimeout(function() { NX.DOM.fontKnobMount.classList.remove('dragging'); }, 600);
+    queueFontSave();
+  }
+  NX.DOM.fontKnob.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    dragStartY = e.clientY;
+    dragStartSize = currentFontSize;
+    NX.DOM.fontKnobMount.classList.add('dragging');
+    window.addEventListener('mousemove', onFontDragMove);
+    window.addEventListener('mouseup', onFontDragEnd);
+  });
+
+  var DAY_NAMES   = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var MONTH_NAMES = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  var clockTimer = null;
+  function tickClock() {
+    var d = new Date();
+    NX.DOM.stardateClock.innerHTML =
+      pad2(d.getHours()) +
+      '<span class="stardate-clock-colon">:</span>' +
+      pad2(d.getMinutes()) +
+      '<span class="stardate-clock-colon">:</span>' +
+      pad2(d.getSeconds());
+    NX.DOM.stardateDow.textContent = DAY_NAMES[d.getDay()];
+    NX.DOM.stardateDate.textContent = pad2(d.getDate()) + ' ' + MONTH_NAMES[d.getMonth()] + ' ' + d.getFullYear();
+  }
+  function startStardateTimers() {
+    if (clockTimer === null) clockTimer = setInterval(tickClock, 1000);
+  }
+  function stopStardateTimers() {
+    if (clockTimer !== null) { clearInterval(clockTimer); clockTimer = null; }
+  }
+  tickClock();
+  startStardateTimers();
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+      stopStardateTimers();
+    } else {
+      tickClock();
+      startStardateTimers();
+    }
+  });
+
+  NX.Boot.start();
+})(window.NX = window.NX || {});
 </script>
 </body>
 </html>
